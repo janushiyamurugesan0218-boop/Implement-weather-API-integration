@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .weather-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #city-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        #search-btn {
+            background: #0984e3;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        #search-btn:hover {
+            background: #023e8a;
+        }
+
+        .weather-info {
+            display: none; /* Hidden until data is loaded */
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #city-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #2d3436;
+        }
+
+        #temp {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0984e3;
+            margin: 10px 0;
+        }
+
+        #description {
+            font-size: 1.1rem;
+            text-transform: capitalize;
+            color: #636e72;
+            margin-bottom: 15px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            color: #2d3436;
+        }
+
+        #error-msg {
+            color: #d63031;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="weather-card">
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name..." autocomplete="off">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <p id="error-msg">City not found. Try again!</p>
+
+        <div class="weather-info" id="weather-info">
+            <h2 id="city-name">London</h2>
+            <div id="temp">21°C</div>
+            <div id="description">Scattered Clouds</div>
+            <div class="details">
+                <div>💧 Humidity: <span id="humidity">60</span>%</div>
+                <div>💨 Wind: <span id="wind">5</span> m/s</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
